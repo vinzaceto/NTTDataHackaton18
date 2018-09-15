@@ -11,9 +11,11 @@ import Vision
 import UIKit
 import Alamofire
 import Firebase
+import Charts
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var pieChart: PieChartView!
   @IBOutlet weak var topConstraint: NSLayoutConstraint!
   @IBOutlet weak var emoticonLabel: UILabel!
   @IBOutlet weak var previewView: UIView!
@@ -68,6 +70,8 @@ class ViewController: UIViewController {
       
       topConstraint.constant = distance
       addSwipes()
+      setChart()
+      setDataCount(4, range: 30)
     }
   
   private func addSwipes()
@@ -338,3 +342,118 @@ class ViewController: UIViewController {
     }
 }
 
+// solo per la logica del grafico a torta
+extension ViewController: ChartViewDelegate
+{
+  private func setChart()
+  {
+    let options: [Option] = [ .toggleValues,
+                    .toggleXValues,
+                    .togglePercent,
+                    .toggleHole,
+                    .toggleIcons,
+                    .animateX,
+                    .animateY,
+                    .animateXY,
+                    .spin,
+                    .drawCenter,
+                    .saveToGallery,
+                    .toggleData]
+    
+    self.setup(pieChartView: pieChart)
+    
+    pieChart.delegate = self
+    
+    let l = pieChart.legend
+    l.horizontalAlignment = .right
+    l.verticalAlignment = .top
+    l.orientation = .vertical
+    l.xEntrySpace = 7
+    l.yEntrySpace = 0
+    l.yOffset = 0
+    //        pieChart.legend = l
+    // entry label styling
+    pieChart.entryLabelColor = .white
+    pieChart.entryLabelFont = .systemFont(ofSize: 12, weight: .light)
+    
+
+    pieChart.animate(xAxisDuration: 1.4, easingOption: .easeOutBack)
+  }
+  
+  func setup(pieChartView pieChart: PieChartView)
+  {
+    pieChart.usePercentValuesEnabled = true
+    pieChart.drawSlicesUnderHoleEnabled = false
+    pieChart.holeRadiusPercent = 0.58
+    pieChart.transparentCircleRadiusPercent = 0.61
+    pieChart.chartDescription?.enabled = false
+    pieChart.setExtraOffsets(left: 5, top: 10, right: 5, bottom: 5)
+    
+    pieChart.drawCenterTextEnabled = true
+    
+    let paragraphStyle = NSParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+    paragraphStyle.lineBreakMode = .byTruncatingTail
+    paragraphStyle.alignment = .center
+    
+    let centerText = NSMutableAttributedString(string: "Charts\nby Daniel Cohen Gindi")
+    centerText.setAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 13)!,
+                              .paragraphStyle : paragraphStyle], range: NSRange(location: 0, length: centerText.length))
+    centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+                              .foregroundColor : UIColor.gray], range: NSRange(location: 10, length: centerText.length - 10))
+    centerText.addAttributes([.font : UIFont(name: "HelveticaNeue-Light", size: 11)!,
+                              .foregroundColor : UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)], range: NSRange(location: centerText.length - 19, length: 19))
+    pieChart.centerAttributedText = centerText;
+    
+    pieChart.drawHoleEnabled = true
+    pieChart.rotationAngle = 0
+    pieChart.rotationEnabled = true
+    pieChart.highlightPerTapEnabled = true
+    
+    let l = pieChart.legend
+    l.horizontalAlignment = .right
+    l.verticalAlignment = .top
+    l.orientation = .vertical
+    l.drawInside = false
+    l.xEntrySpace = 7
+    l.yEntrySpace = 0
+    l.yOffset = 0
+    //        pieChart.legend = l
+  }
+  
+  private func setDataCount(_ count: Int, range: UInt32)
+  {
+    let entries = (0..<count).map { (i) -> PieChartDataEntry in
+      // IMPORTANT: In a PieChart, no values (Entry) should have the same xIndex (even if from different DataSets), since no values can be drawn above each other.
+      return PieChartDataEntry(value: Double(arc4random_uniform(range) + range / 5),
+                               label: "blablabla",
+                               icon: #imageLiteral(resourceName: "happy-1"))
+    }
+    
+    let set = PieChartDataSet(values: entries, label: "Election Results")
+    set.drawIconsEnabled = false
+    set.sliceSpace = 2
+    
+    
+    set.colors = ChartColorTemplates.vordiplom()
+      + ChartColorTemplates.joyful()
+      + ChartColorTemplates.colorful()
+      + ChartColorTemplates.liberty()
+      + ChartColorTemplates.pastel()
+      + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
+    
+    let data = PieChartData(dataSet: set)
+    
+    let pFormatter = NumberFormatter()
+    pFormatter.numberStyle = .percent
+    pFormatter.maximumFractionDigits = 1
+    pFormatter.multiplier = 1
+    pFormatter.percentSymbol = " %"
+    data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+    
+    data.setValueFont(.systemFont(ofSize: 11, weight: .light))
+    data.setValueTextColor(.white)
+    
+    pieChart.data = data
+    pieChart.highlightValues(nil)
+  }
+}

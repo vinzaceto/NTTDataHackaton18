@@ -12,12 +12,13 @@
 		11D9CE5E214C25240009603B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D9CE5C214C25240009603B /* Main.storyboard */; };
 		11D9CE60214C25260009603B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11D9CE5F214C25260009603B /* Assets.xcassets */; };
 		11D9CE63214C25260009603B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11D9CE61214C25260009603B /* LaunchScreen.storyboard */; };
-		11D9CE6C214C25C90009603B /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 11D9CE6B214C25C90009603B /* CNNEmotions.mlmodel */; };
 		11D9CE6E214C27630009603B /* AVCaptureDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9CE6D214C27630009603B /* AVCaptureDeviceExtension.swift */; };
 		11D9CE70214C278A0009603B /* VideoCameraType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9CE6F214C278A0009603B /* VideoCameraType.swift */; };
 		11D9CE72214C279C0009603B /* VideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D9CE71214C279C0009603B /* VideoCapture.swift */; };
 		11FD971A214CF733002FE1C1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11FD9719214CF733002FE1C1 /* GoogleService-Info.plist */; };
-		11FD971C214CFB7D002FE1C1 /* EmotiClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 11FD971B214CFB7D002FE1C1 /* EmotiClassifier.mlmodel */; };
+		7D311D73214D21EF0064A134 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D311D72214D21EF0064A134 /* Options.swift */; };
+		7DDF8983214D09E500D484F1 /* CNNEmotions.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF8981214D09E500D484F1 /* CNNEmotions.mlmodel */; };
+		7DDF8984214D09E500D484F1 /* EmotiClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF8982214D09E500D484F1 /* EmotiClassifier.mlmodel */; };
 		CFE3E7360BFCE111B9BBEA4D /* Pods_swiftHackaton18.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E94A258F9ED66AF7727B7F7B /* Pods_swiftHackaton18.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,13 +30,14 @@
 		11D9CE5F214C25260009603B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11D9CE62214C25260009603B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11D9CE64214C25260009603B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11D9CE6B214C25C90009603B /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = CNNEmotions.mlmodel; sourceTree = "<group>"; };
 		11D9CE6D214C27630009603B /* AVCaptureDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCaptureDeviceExtension.swift; sourceTree = "<group>"; };
 		11D9CE6F214C278A0009603B /* VideoCameraType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCameraType.swift; sourceTree = "<group>"; };
 		11D9CE71214C279C0009603B /* VideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		11FD9719214CF733002FE1C1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		11FD971B214CFB7D002FE1C1 /* EmotiClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = EmotiClassifier.mlmodel; sourceTree = "<group>"; };
 		51037735287BE02DFCE23F9B /* Pods-swiftHackaton18.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftHackaton18.release.xcconfig"; path = "Pods/Target Support Files/Pods-swiftHackaton18/Pods-swiftHackaton18.release.xcconfig"; sourceTree = "<group>"; };
+		7D311D72214D21EF0064A134 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		7DDF8981214D09E500D484F1 /* CNNEmotions.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = CNNEmotions.mlmodel; path = swiftHackaton18/CNNEmotions.mlmodel; sourceTree = SOURCE_ROOT; };
+		7DDF8982214D09E500D484F1 /* EmotiClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = EmotiClassifier.mlmodel; path = swiftHackaton18/EmotiClassifier.mlmodel; sourceTree = SOURCE_ROOT; };
 		8191B9AACD4D3428F1C70D13 /* Pods-swiftHackaton18.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-swiftHackaton18.debug.xcconfig"; path = "Pods/Target Support Files/Pods-swiftHackaton18/Pods-swiftHackaton18.debug.xcconfig"; sourceTree = "<group>"; };
 		E94A258F9ED66AF7727B7F7B /* Pods_swiftHackaton18.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_swiftHackaton18.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -84,6 +86,7 @@
 				11D9CE6F214C278A0009603B /* VideoCameraType.swift */,
 				11D9CE71214C279C0009603B /* VideoCapture.swift */,
 				11FD9719214CF733002FE1C1 /* GoogleService-Info.plist */,
+				7D311D72214D21EF0064A134 /* Options.swift */,
 			);
 			path = swiftHackaton18;
 			sourceTree = "<group>";
@@ -91,8 +94,8 @@
 		11D9CE6A214C25A30009603B /* CoreMLModels */ = {
 			isa = PBXGroup;
 			children = (
-				11FD971B214CFB7D002FE1C1 /* EmotiClassifier.mlmodel */,
-				11D9CE6B214C25C90009603B /* CNNEmotions.mlmodel */,
+				7DDF8981214D09E500D484F1 /* CNNEmotions.mlmodel */,
+				7DDF8982214D09E500D484F1 /* EmotiClassifier.mlmodel */,
 			);
 			path = CoreMLModels;
 			sourceTree = "<group>";
@@ -211,9 +214,11 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-swiftHackaton18/Pods-swiftHackaton18-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
@@ -224,9 +229,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
@@ -245,13 +252,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11D9CE6C214C25C90009603B /* CNNEmotions.mlmodel in Sources */,
+				7DDF8983214D09E500D484F1 /* CNNEmotions.mlmodel in Sources */,
 				11D9CE6E214C27630009603B /* AVCaptureDeviceExtension.swift in Sources */,
 				11D9CE5B214C25240009603B /* ViewController.swift in Sources */,
 				11D9CE70214C278A0009603B /* VideoCameraType.swift in Sources */,
+				7D311D73214D21EF0064A134 /* Options.swift in Sources */,
 				11D9CE72214C279C0009603B /* VideoCapture.swift in Sources */,
 				11D9CE59214C25240009603B /* AppDelegate.swift in Sources */,
-				11FD971C214CFB7D002FE1C1 /* EmotiClassifier.mlmodel in Sources */,
+				7DDF8984214D09E500D484F1 /* EmotiClassifier.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
