@@ -167,13 +167,23 @@ class ViewController: UIViewController {
                 //.map({ "\($0.identifier) \($0.confidence)" })
             .map({"\($0.identifier)"})
             
-            let classificationsPercent = observations[0...3]
+            let classificationsLabelPercent = observations[0...3]
                 .compactMap({ $0 as? VNClassificationObservation })
                 .filter({ $0.confidence > 0.8 })
                 .map({ "\($0.identifier) \($0.confidence)" })
             
+            let classificationsPercent = observations[0...3]
+                .compactMap({ $0 as? VNClassificationObservation })
+                .filter({ $0.confidence > 0.8 })
+                .map({ "\($0.confidence)" })
+            
             DispatchQueue.main.async {
-                self.predictionLabel.text = classificationsPercent.first
+                self.predictionLabel.text = classificationsLabelPercent.first
+                
+                if (classificationsLabels.first != nil && classificationsPercent.first != nil) {
+                    self.addEmotion(label: classificationsLabels.first!, precision: classificationsPercent.first!)
+                }
+
               switch classificationsLabels.first
               {
               case "Sad":
@@ -256,7 +266,6 @@ class ViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
-        // [END add_ada_lovelace]
     }
     
     private static func createDateDescription(date: Date) -> String
