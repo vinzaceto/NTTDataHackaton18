@@ -17,6 +17,7 @@ class ViewController: UIViewController {
   @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var predictionLabel: UILabel!
   @IBOutlet weak var sampleView: UIView!
+  @IBOutlet weak var bottomView: UIView!
   
     let emotionalModel = CNNEmotions()
 
@@ -28,11 +29,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVision()
+      bottomView.layer.cornerRadius = 20
         
         let spec = VideoSpec(fps: 5, size: CGSize(width: 299, height: 299))
         videoCapture = VideoCapture(cameraType: .front,
                                     preferredSpec: spec,
-                                    previewContainer: previewView.layer)
+                                    previewContainer: sampleView.layer)
         
         videoCapture.imageBufferHandler = {[unowned self] (imageBuffer) in
             if self.useCoreML {
