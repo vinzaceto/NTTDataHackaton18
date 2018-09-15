@@ -10,6 +10,7 @@ import CoreMedia
 import Vision
 import UIKit
 import Alamofire
+import Firebase
 
 class ViewController: UIViewController {
 
@@ -19,6 +20,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var predictionLabel: UILabel!
   @IBOutlet weak var sampleView: UIView!
   @IBOutlet weak var bottomView: UIView!
+    
+    
+    var db: Firestore!
+
   
   private let distance: CGFloat = 420
   
@@ -32,6 +37,16 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //setup firebase
+        // [START setup]
+        let settings = FirestoreSettings()
+        
+        Firestore.firestore().settings = settings
+        // [END setup]
+        db = Firestore.firestore()
+        
+        
         setupVision()
       bottomView.layer.cornerRadius = 20
         
@@ -108,6 +123,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 if let prob = prediction.prob[prediction.classLabel] {
                     self.predictionLabel.text = "\(prediction.classLabel) \(String(describing: prob))"
+                    self.addEmotion(label: prediction.classLabel, precision: String(describing: prob))
                 }
             }
         }
@@ -222,6 +238,43 @@ class ViewController: UIViewController {
         CVPixelBufferCreate(kCFAllocatorDefault, imageSide, imageSide, CVPixelBufferGetPixelFormatType(pixelBuffer), nil, &resizeBuffer)
         ciContext.render(ciImage, to: resizeBuffer!)
         return resizeBuffer
+    }
+    
+    
+    private func addEmotion(label: String,precision: String) {
+        // Add a new document with a generated ID
+        var ref: DocumentReference? = nil
+        ref = db.collection("track").addDocument(data: [
+            "description": label,
+            "precision": precision,
+            "date": ViewController.createDateDescription(date: Date()),
+            "time": ViewController.createTimeDescription(date: Date()),
+        ]) { err in
+            if let err = err {
+                print("Error adding document: \(err)")
+            } else {
+                print("Document added with ID: \(ref!.documentID)")
+            }
+        }
+        // [END add_ada_lovelace]
+    }
+    
+    private static func createDateDescription(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "dd/MMMM/yyyy"
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    private static func createTimeDescription(date: Date) -> String
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "HH:mm"
+        
+        return dateFormatter.string(from: date)
     }
     
     override func viewWillAppear(_ animated: Bool) {
