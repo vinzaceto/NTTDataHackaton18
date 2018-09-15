@@ -50,13 +50,23 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OtN-J5-7sf">
+                                        <rect key="frame" x="75" y="211.5" width="224" height="224"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="224" id="ADV-wM-mYG"/>
+                                            <constraint firstAttribute="height" constant="224" id="x8X-hi-hOl"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="OtN-J5-7sf" firstAttribute="centerY" secondItem="W9G-0v-vtZ" secondAttribute="centerY" id="4fV-oh-GpT"/>
                                     <constraint firstItem="Ojd-ss-aX0" firstAttribute="top" secondItem="W9G-0v-vtZ" secondAttribute="top" constant="8" id="FgR-M0-66K"/>
                                     <constraint firstItem="2dr-8p-iXZ" firstAttribute="centerX" secondItem="W9G-0v-vtZ" secondAttribute="centerX" id="OuV-JO-6CG"/>
                                     <constraint firstItem="2dr-8p-iXZ" firstAttribute="leading" secondItem="W9G-0v-vtZ" secondAttribute="leading" constant="4" id="Y4a-Iv-NA2"/>
                                     <constraint firstItem="Ojd-ss-aX0" firstAttribute="centerX" secondItem="W9G-0v-vtZ" secondAttribute="centerX" id="egV-Td-GHD"/>
+                                    <constraint firstItem="OtN-J5-7sf" firstAttribute="centerX" secondItem="W9G-0v-vtZ" secondAttribute="centerX" id="obQ-Gc-oQB"/>
                                     <constraint firstItem="2dr-8p-iXZ" firstAttribute="bottom" secondItem="W9G-0v-vtZ" secondAttribute="bottomMargin" id="otz-Hl-7UM"/>
                                 </constraints>
                             </view>
@@ -74,6 +84,7 @@
                         <outlet property="emoticonLabel" destination="Ojd-ss-aX0" id="K5D-XF-ckC"/>
                         <outlet property="predictionLabel" destination="zys-ad-HKU" id="HpK-4s-Xm0"/>
                         <outlet property="previewView" destination="W9G-0v-vtZ" id="y5H-Fv-ylN"/>
+                        <outlet property="sampleView" destination="OtN-J5-7sf" id="OEs-2b-g8b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

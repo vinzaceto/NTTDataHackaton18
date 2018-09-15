@@ -16,7 +16,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var emoticonLabel: UILabel!
   @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var predictionLabel: UILabel!
-
+  @IBOutlet weak var sampleView: UIView!
+  
     let emotionalModel = CNNEmotions()
 
     private var videoCapture: VideoCapture!
