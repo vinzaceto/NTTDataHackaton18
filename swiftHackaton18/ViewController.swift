@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     private var videoCapture: VideoCapture!
     private var requests = [VNRequest]()
     
-    var useCoreML = false;
+    var useCoreML = true;
 
     override func viewDidLoad() {
         super.viewDidLoad()
