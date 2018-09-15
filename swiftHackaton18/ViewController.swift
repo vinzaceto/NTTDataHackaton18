@@ -182,6 +182,7 @@ class ViewController: UIViewController {
                 
                 if (classificationsLabels.first != nil && classificationsPercent.first != nil) {
                     self.addEmotion(label: classificationsLabels.first!, precision: classificationsPercent.first!)
+                    self.getMultiple()
                 }
 
               switch classificationsLabels.first
@@ -266,6 +267,32 @@ class ViewController: UIViewController {
                 print("Document added with ID: \(ref!.documentID)")
             }
         }
+    }
+    
+    private func simpleQueries() {
+        // [START simple_queries]
+        // Create a reference to the collection
+        let trackRef = db.collection("track")
+        
+        // Create a query against the collection.
+        let query = trackRef.whereField("emotion", isEqualTo: "Sad")
+        // [END simple_queries]
+        print(query)
+    }
+    
+    private func getMultiple() {
+        // [START get_multiple]
+        db.collection("track").whereField("description", isEqualTo: "Happy")
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+        }
+        // [END get_multiple]
     }
     
     private static func createDateDescription(date: Date) -> String
