@@ -19,7 +19,8 @@ class ViewController: UIViewController {
   @IBOutlet weak var sampleView: UIView!
   @IBOutlet weak var bottomView: UIView!
   
-    let emotionalModel = CNNEmotions()
+    //let emotionalModel = CNNEmotions()
+    let emotionalModel = EmotiClassifier()
 
     private var videoCapture: VideoCapture!
     private var requests = [VNRequest]()
