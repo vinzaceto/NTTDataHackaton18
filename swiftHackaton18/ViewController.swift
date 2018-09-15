@@ -13,11 +13,14 @@ import Alamofire
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var topConstraint: NSLayoutConstraint!
   @IBOutlet weak var emoticonLabel: UILabel!
   @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var predictionLabel: UILabel!
   @IBOutlet weak var sampleView: UIView!
   @IBOutlet weak var bottomView: UIView!
+  
+  private let distance: CGFloat = 420
   
     //let emotionalModel = CNNEmotions()
     let emotionalModel = EmotiClassifier()
@@ -25,7 +28,7 @@ class ViewController: UIViewController {
     private var videoCapture: VideoCapture!
     private var requests = [VNRequest]()
     
-    var useCoreML = true;
+    var useCoreML = false;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +38,7 @@ class ViewController: UIViewController {
         let spec = VideoSpec(fps: 5, size: CGSize(width: 299, height: 299))
         videoCapture = VideoCapture(cameraType: .front,
                                     preferredSpec: spec,
-                                    previewContainer: sampleView.layer)
+                                    previewContainer: previewView.layer)
         
         videoCapture.imageBufferHandler = {[unowned self] (imageBuffer) in
             if self.useCoreML {
@@ -47,8 +50,54 @@ class ViewController: UIViewController {
                 self.handleImageBufferWithVision(imageBuffer: imageBuffer)
             }
         }
-        
+      
+      topConstraint.constant = distance
+      addSwipes()
     }
+  
+  private func addSwipes()
+  {
+    addSwipeUp()
+    addSwipeDown()
+  }
+  
+  private func addSwipeDown()
+  {
+    let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappened(sender:)))
+    swipeGesture.direction = .down
+    self.view.addGestureRecognizer(swipeGesture)
+  }
+  
+  private func addSwipeUp()
+  {
+      let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpHappened(sender:)))
+      swipeGesture.direction = .up
+      self.view.addGestureRecognizer(swipeGesture)
+  }
+  
+  @objc private func swipeDownHappened(sender: UISwipeGestureRecognizer)
+  {
+    if topConstraint.constant == 0
+    {
+      self.topConstraint.constant = self.distance
+      animate(self.view.layoutIfNeeded())
+    }
+  }
+  
+  @objc private func swipeUpHappened(sender: UISwipeGestureRecognizer)
+  {
+    if topConstraint.constant == distance
+    {
+      self.topConstraint.constant = 0
+      animate(self.view.layoutIfNeeded())
+    }
+  }
+  
+  func animate(_ animation: @autoclosure @escaping () -> Void,
+               duration: TimeInterval = 0.25)
+  {
+    UIView.animate(withDuration: duration, animations: animation)
+  }
 
     func handleImageBufferWithCoreML(imageBuffer: CMSampleBuffer) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(imageBuffer) else {

@@ -72,7 +72,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2I-wK-gvV">
-                                <rect key="frame" x="0.0" y="387" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="390" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tester Numero:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hf-xG-Ubs">
                                         <rect key="frame" x="40" y="55" width="124.5" height="21"/>
@@ -133,7 +133,7 @@
                             <constraint firstItem="t2I-wK-gvV" firstAttribute="height" secondItem="fhz-e3-buI" secondAttribute="height" id="Djo-On-ezg"/>
                             <constraint firstItem="vfX-Rf-ESw" firstAttribute="trailing" secondItem="t2I-wK-gvV" secondAttribute="trailing" id="FrW-8U-z6t"/>
                             <constraint firstItem="W9G-0v-vtZ" firstAttribute="bottom" secondItem="vfX-Rf-ESw" secondAttribute="bottom" id="Gja-fc-o6L"/>
-                            <constraint firstItem="t2I-wK-gvV" firstAttribute="top" secondItem="vfX-Rf-ESw" secondAttribute="top" constant="367" id="Zw2-Lh-PMP"/>
+                            <constraint firstItem="t2I-wK-gvV" firstAttribute="top" secondItem="vfX-Rf-ESw" secondAttribute="top" constant="370" id="Zw2-Lh-PMP"/>
                             <constraint firstItem="t2I-wK-gvV" firstAttribute="leading" secondItem="vfX-Rf-ESw" secondAttribute="leading" id="c5U-2i-YFN"/>
                             <constraint firstItem="W9G-0v-vtZ" firstAttribute="top" secondItem="vfX-Rf-ESw" secondAttribute="top" id="rve-gB-ojP"/>
                             <constraint firstItem="W9G-0v-vtZ" firstAttribute="leading" secondItem="vfX-Rf-ESw" secondAttribute="leading" id="tKL-WY-pG8"/>
@@ -147,6 +147,7 @@
                         <outlet property="predictionLabel" destination="zys-ad-HKU" id="HpK-4s-Xm0"/>
                         <outlet property="previewView" destination="W9G-0v-vtZ" id="y5H-Fv-ylN"/>
                         <outlet property="sampleView" destination="OtN-J5-7sf" id="OEs-2b-g8b"/>
+                        <outlet property="topConstraint" destination="Zw2-Lh-PMP" id="FaM-0c-d0o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
