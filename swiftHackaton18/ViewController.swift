@@ -13,10 +13,11 @@ import Alamofire
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var emotionImageView: UIImageView!
-    @IBOutlet weak var previewView: UIView!
+  @IBOutlet weak var emoticonLabel: UILabel!
+  @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var predictionLabel: UILabel!
-
+  @IBOutlet weak var sampleView: UIView!
+  
     let emotionalModel = CNNEmotions()
 
     private var videoCapture: VideoCapture!
@@ -105,20 +106,21 @@ class ViewController: UIViewController {
             
             DispatchQueue.main.async {
                 self.predictionLabel.text = classificationsPercent.first
-                switch classificationsLabels.first {
-                    case "Sad":
-                            self.emotionImageView.image = #imageLiteral(resourceName: "sad-4");
-                    case "Happy":
-                            self.emotionImageView.image = #imageLiteral(resourceName: "happy-1");
-                    case "Neutral":
-                            self.emotionImageView.image = #imageLiteral(resourceName: "sceptic-5");
-                    case "Angry":
-                            self.emotionImageView.image = #imageLiteral(resourceName: "sick-2");
-                    case "Fear":
-                            self.emotionImageView.image = #imageLiteral(resourceName: "shocked-2");
-                    default:
-                            self.emotionImageView.image = nil;
-                }
+              switch classificationsLabels.first
+              {
+              case "Sad":
+                self.emoticonLabel.text = "😥"
+              case "Happy":
+                self.emoticonLabel.text = "😃"
+              case "Neutral":
+                self.emoticonLabel.text = "😑"
+              case "Angry":
+                self.emoticonLabel.text = "🤬"
+              case "Fear":
+                self.emoticonLabel.text = "😱"
+              default:
+                self.emoticonLabel.text = ""
+              }
             }
         }
         classificationRequest.imageCropAndScaleOption = VNImageCropAndScaleOption.centerCrop
